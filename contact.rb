@@ -53,16 +53,16 @@ class Contact
     # self.attribute = new_value
     # check out this handy case - when stuff
     case attribute
-    when "first_name"
-      @first_name = new_value
-    when "last_name"
-      @last_name = new_value
-    when "email"
-      @email = new_value
-    when "notes"
-      @notes = new_value
-    else
-      puts "That's not a thing you can update"
+      when "first_name"
+        @first_name = new_value
+      when "last_name"
+        @last_name = new_value
+      when "email"
+        @email = new_value
+      when "notes"
+        @notes = new_value
+      else
+        puts "That's not a thing you can update"
     end
     # here's the send thing Dan talked about
     # send "#{attribute}=", new_value
@@ -72,8 +72,24 @@ class Contact
   # but it should allow you to search for a contact using attributes other than id
   # by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
-  def self.find_by
-
+  def self.find_by(attribute, value)
+    @@contacts.each do |contact|
+      case attribute
+        when "first_name"
+          if value == contact.first_name
+            return contact
+          end
+        when "last_name"
+          if value == contact.last_name
+            return contact
+          end
+        when "email"
+          if value == contact.email
+            return contact
+          end
+      end
+    end
+    return
   end
 
   # This method should delete all of the contacts
