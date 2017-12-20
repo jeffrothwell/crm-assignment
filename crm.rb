@@ -30,7 +30,7 @@ class CRM
     when 3 then delete_contact
     when 4 then display_all_contacts
     when 5 then search_by_attribute
-    when 6 then # exit???
+    when 6 then exit
     end
   end
 
@@ -56,3 +56,7 @@ class CRM
 
 
 end
+
+c = CRM.new
+
+c.main_menu
