@@ -1,5 +1,7 @@
 class Contact
 
+  # attr_accessor :first_name, :last_name, :email, :notes
+
   @@contacts = []
   @@id = 1
   # This method should initialize the contact's attributes
@@ -52,13 +54,13 @@ class Contact
     # check out this handy case - when stuff
     case attribute
     when "first_name"
-      self.first_name = new_value
+      @first_name = new_value
     when "last_name"
-      self.last_name = new_value
+      @last_name = new_value
     when "email"
-      self.email = new_value
+      @email = new_value
     when "notes"
-      self.notes = new_value
+      @notes = new_value
     else
       puts "That's not a thing you can update"
     end
