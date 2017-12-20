@@ -52,7 +52,32 @@ class CRM
 
   def modify_existing_contact
     puts "Which contact?"
+    contact_to_modify = search_by_attribute
 
+    puts "What do you want to modify?"
+    puts "[1] first name"
+    puts "[2] last name"
+    puts "[3] email"
+    attribute_number = gets.to_i
+
+    case attribute_number
+      when 1 then attribute_to_modify = "first_name"
+      when 2 then attribute_to_modify = "last_name"
+      when 3 then attribute_to_modify = "email"
+    end
+
+    puts "Enter the updated information:"
+    new_value = gets.chomp
+
+    updated_contact = contact_to_modify.update(
+      contact_to_modify,
+      attribute_to_modify,
+      new_value
+    )
+    puts "Updated info:\n"
+    puts "    Name        Email"
+    puts "  #{updated_contact.full_name}  #{updated_contact.email}"
+    return updated_contact
   end
 
   def delete_contact
@@ -63,10 +88,12 @@ class CRM
   # just have it return nil rather than return the full
   # contact list
   def display_all_contacts
+    num = 1
     contacts = Contact.all
     puts "    Name        Email"
     contacts.each do |contact|
-      puts "  #{contact.full_name}  #{contact.email}"
+      puts "#{num}  #{contact.full_name}  #{contact.email}"
+      num += 1
     end
     return
   end
@@ -96,7 +123,7 @@ class CRM
 
     puts "    Name        Email"
     puts "  #{found_contact.full_name}  #{found_contact.email}"
-    return  #return nil, I don't think we really need to return anything
+    return found_contact
   end
 
 
