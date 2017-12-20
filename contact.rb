@@ -43,7 +43,7 @@ class Contact
   # 1. which of the contact's attributes you want to update
   # 2. the new value for that attribute
   # and then make the appropriate change to the contact
-  def update(attribute, new_value)
+  def update(contact, attribute, new_value)
     # I believe this will allow me to access the writer
     # for the attribute, and run this method on the self
     # object on which the update method is called
@@ -54,18 +54,19 @@ class Contact
     # check out this handy case - when stuff
     case attribute
       when "first_name"
-        @first_name = new_value
+        contact.first_name = new_value
       when "last_name"
-        @last_name = new_value
+        contact.last_name = new_value
       when "email"
-        @email = new_value
+        contact.email = new_value
       when "notes"
-        @notes = new_value
+        contact.notes = new_value
       else
         puts "That's not a thing you can update"
     end
     # here's the send thing Dan talked about
     # send "#{attribute}=", new_value
+    return contact
   end
 
   # This method should work similarly to the find method above
