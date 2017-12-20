@@ -58,8 +58,16 @@ class CRM
 
   end
 
+  # this method doesn't need to return a value, so I will
+  # just have it return nil rather than return the full
+  # contact list
   def display_all_contacts
-
+    contacts = Contact.all
+    puts "    Name        Email"
+    contacts.each do |contact|
+      puts "  #{contact.full_name}  #{contact.email}"
+    end
+    return
   end
 
   def search_by_attribute
