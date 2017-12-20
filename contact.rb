@@ -49,15 +49,21 @@ class Contact
     # read this and try to run some .attribute method
     # Dan suggested looking up the send method
     # self.attribute = new_value
-    if attribute == "first_name"
+    # check out this handy case - when stuff
+    case attribute
+    when "first_name"
       self.first_name = new_value
-    elsif attribute == "last_name"
+    when "last_name"
       self.last_name = new_value
-    elsif attribute == "email"
+    when "email"
       self.email = new_value
-    elsif attribute == "notes"
+    when "notes"
       self.notes = new_value
+    else
+      puts "That's not a thing you can update"
     end
+    # here's the send thing Dan talked about
+    # send "#{attribute}=", new_value
   end
 
   # This method should work similarly to the find method above
