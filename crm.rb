@@ -1,3 +1,4 @@
+require "./contact.rb"
 class CRM
 
   def initialize
@@ -23,18 +24,13 @@ class CRM
   end
 
   def call_option(option)
-    if option == 1
-      add_new_contact
-    elsif option == 2
-      modify_existing_contact
-    elsif option == 3
-      delete_contact
-    elsif option == 4
-      display_all_contacts
-    elsif option == 5
-      search_by_attribute
-    elsif option == 6
-      # exit???
+    case option
+    when 1 then add_new_contact
+    when 2 then modify_existing_contact
+    when 3 then delete_contact
+    when 4 then display_all_contacts
+    when 5 then search_by_attribute
+    when 6 then # exit???
     end
   end
 
