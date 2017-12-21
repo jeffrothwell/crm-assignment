@@ -108,10 +108,8 @@ class Contact
 
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
-  def delete(contact)
-    # using the .delete method with contact as an argument
-    # returns the deleted object itslef, or nil if non existent
-    @@contacts.delete(contact)
+  def delete
+    @@contacts.delete(self)
   end
 
   # Feel free to add other methods here, if you need them.

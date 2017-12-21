@@ -1,4 +1,4 @@
-require "pry"
+# require "pry"
 require "./contact.rb"
 class CRM
 
@@ -54,7 +54,6 @@ class CRM
   def modify_existing_contact
     puts "********\n\nWhich contact?"
     contact_to_modify = search_by_attribute
-    # binding.pry
     return unless contact_to_modify
 
     puts "********\n\nWhat do you want to modify?"
@@ -83,7 +82,18 @@ class CRM
   end
 
   def delete_contact
+    puts "********\n\nWhich contact?"
+    contact_to_delete = search_by_attribute
+    return unless contact_to_delete  #this will be nil if contact not found
 
+    puts "********\n\nConfirm delete? (y / n)"
+    confirmation = gets.chomp
+    if confirmation == "y"
+      contact_to_delete.delete
+      puts "Contact removed"
+    else
+      return
+    end
   end
 
   # this method doesn't need to return a value, so I will
@@ -139,6 +149,11 @@ class CRM
 
 
 end
+
+jeff = Contact.create("Jeff", "Rothwell", "jeff@rothwell.com", "pretty alright dude")
+aaron_wolf = Contact.create("Aaron", "Wolf", "aaron@gamehenge.com", "resists Wilson in Prussia")
+col_forbin = Contact.create("Colonel", "Forbin", "forbin@tmwsiy.com", "Looks too much like Dave")
+palmer = Contact.create("Robert", "Palmer", "palmer@gamehenge.com", "Accountant funding the revolution")
 
 c = CRM.new
 
