@@ -91,7 +91,7 @@ class CRM
   # contact list
   def display_all_contacts
     contacts = Contact.all
-    puts "id    Name        Email"
+    puts "********\n\nid    Name        Email"
     contacts.each do |contact|
       puts "#{contact.id}  #{contact.full_name}  #{contact.email}"
     end
@@ -99,7 +99,7 @@ class CRM
   end
 
   def search_by_attribute
-    puts "[1] search by first name"
+    puts "********\n\n[1] search by first name"
     puts "[2] search by last name"
     puts "[3] search by email"
     puts "[4] search by id number"
@@ -116,7 +116,7 @@ class CRM
     end
 
     # get the user's search term
-    puts "Search for:"
+    puts "********\n\nSearch for:"
     if attribute == "id"
       value = gets.to_i
     else
@@ -128,7 +128,7 @@ class CRM
     found_contact = Contact.find_by(attribute, value)
 
     if found_contact  #found contact returns nil on no match
-      puts "id    Name        Email"
+      puts "********\n\nid    Name        Email"
       puts "#{found_contact.id}  #{found_contact.full_name}  #{found_contact.email}"
     else
       puts "********\n\nNo matches found\n********\n\n"
