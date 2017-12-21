@@ -1,3 +1,4 @@
+require "pry"
 require "./contact.rb"
 class CRM
 
@@ -53,6 +54,8 @@ class CRM
   def modify_existing_contact
     puts "Which contact?"
     contact_to_modify = search_by_attribute
+    # binding.pry
+    return unless contact_to_modify
 
     puts "What do you want to modify?"
     puts "[1] first name"
@@ -120,8 +123,13 @@ class CRM
     # variable, which will be an object with a class of Contact
     found_contact = Contact.find_by(attribute, value)
 
-    puts "    Name        Email"
-    puts "  #{found_contact.full_name}  #{found_contact.email}"
+    if found_contact  #found contact returns nil on no match
+      puts "    Name        Email"
+      puts "  #{found_contact.full_name}  #{found_contact.email}"
+    else
+      puts "No matches found"
+      return
+    end
     return found_contact
   end
 
