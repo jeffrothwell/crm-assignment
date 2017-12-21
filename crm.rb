@@ -53,8 +53,10 @@ class CRM
 
   def modify_existing_contact
     puts "********\n\nWhich contact?"
+    # going to use my search_by_attribute method to find the contact
+    # to modify and store it in a local variable
     contact_to_modify = search_by_attribute
-    return unless contact_to_modify
+    return unless contact_to_modify  #will be nil if contact not found
 
     puts "********\n\nWhat do you want to modify?"
     puts "[1] first name"
@@ -128,9 +130,9 @@ class CRM
     # get the user's search term
     puts "********\n\nSearch for:"
     if attribute == "id"
-      value = gets.to_i
+      value = gets.to_i  #id has to be integer
     else
-      value = gets.chomp
+      value = gets.chomp #other serach terms are strings
     end
 
     # run the find_by class method, store it in a local
@@ -142,7 +144,7 @@ class CRM
       puts "#{found_contact.id}  #{found_contact.full_name}  #{found_contact.email}"
     else
       puts "********\n\nNo matches found\n********\n\n"
-      return
+      return # return nil if we don't find the contact
     end
     return found_contact
   end

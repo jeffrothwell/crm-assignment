@@ -61,8 +61,6 @@ class Contact
         @email = new_value
       when "notes"
         @notes = new_value
-      else
-        puts "That's not a thing you can update"
     end
     # here's the send thing Dan talked about
     # send "#{attribute}=", new_value
@@ -94,7 +92,7 @@ class Contact
           end
       end
     end
-    return
+    return #return nil if we get to this point, no contact found
   end
 
   # This method should delete all of the contacts
