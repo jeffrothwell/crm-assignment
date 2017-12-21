@@ -70,7 +70,6 @@ class CRM
     new_value = gets.chomp
 
     updated_contact = contact_to_modify.update(
-      contact_to_modify,
       attribute_to_modify,
       new_value
     )
