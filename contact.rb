@@ -88,6 +88,10 @@ class Contact
           if value == contact.email
             return contact
           end
+        when "id"
+          if value == contact.id
+            return contact
+          end
       end
     end
     return
@@ -125,6 +129,10 @@ class Contact
 
   def notes
     @notes
+  end
+
+  def id
+    @id
   end
 
   def first_name=(first_name)
