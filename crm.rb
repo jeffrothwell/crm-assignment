@@ -69,22 +69,22 @@ class CRM
     attribute_number = gets.to_i
 
     case attribute_number
-      when 1 then attribute_to_modify = "first_name"
-      when 2 then attribute_to_modify = "last_name"
-      when 3 then attribute_to_modify = "email"
+    when 1 then attribute_to_modify = :first_name
+    when 2 then attribute_to_modify = :last_name
+    when 3 then attribute_to_modify = :email
     end
 
     puts "********\n\nEnter the updated information:"
     new_value = gets.chomp
 
-    updated_contact = contact_to_modify.update(
-      attribute_to_modify,
+    contact_to_modify.update(
+      attribute_to_modify =>
       new_value
     )
     puts "********\n\nUpdated info:\n"
     puts "    Name        Email"
-    puts "  #{updated_contact.full_name}  #{updated_contact.email}"
-    return updated_contact
+    puts "  #{contact_to_modify.full_name}  #{contact_to_modify.email}"
+    return contact_to_modify
   end
 
   def delete_contact
@@ -125,10 +125,10 @@ class CRM
     # string that will match with mesh with the exact attribute
     # names I can use in contact.rb
     case attribute_number
-      when 1 then attribute = "first_name"
-      when 2 then attribute = "last_name"
-      when 3 then attribute = "email"
-      when 4 then attribute = "id"
+    when 1 then attribute = :first_name
+    when 2 then attribute = :last_name
+    when 3 then attribute = :email
+    when 4 then attribute = :id
     end
 
     # get the user's search term
@@ -138,10 +138,9 @@ class CRM
     else
       value = gets.chomp #other serach terms are strings
     end
-
     # run the find_by class method, store it in a local
     # variable, which will be an object with a class of Contact
-    found_contact = Contact.find_by(attribute, value)
+    found_contact = Contact.find_by(attribute => value)
 
     if found_contact  #found contact returns nil on no match
       puts "********\n\nid    Name        Email"
@@ -155,11 +154,6 @@ class CRM
 
 
 end
-
-# jeff = Contact.create("Jeff", "Rothwell", "jeff@rothwell.com", "pretty alright dude")
-# aaron_wolf = Contact.create("Aaron", "Wolf", "aaron@gamehenge.com", "resists Wilson in Prussia")
-# col_forbin = Contact.create("Colonel", "Forbin", "forbin@tmwsiy.com", "Looks too much like Dave")
-# palmer = Contact.create("Robert", "Palmer", "palmer@gamehenge.com", "Accountant funding the revolution")
 
 c = CRM.new
 
