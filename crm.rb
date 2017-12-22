@@ -46,9 +46,13 @@ class CRM
     email = gets.chomp
 
     puts "Enter a note: "
-    notes = gets.chomp
+    note = gets.chomp
 
-    Contact.create(first_name, last_name, email, notes)
+    Contact.create(
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      note: note)
   end
 
   def modify_existing_contact
@@ -152,10 +156,10 @@ class CRM
 
 end
 
-jeff = Contact.create("Jeff", "Rothwell", "jeff@rothwell.com", "pretty alright dude")
-aaron_wolf = Contact.create("Aaron", "Wolf", "aaron@gamehenge.com", "resists Wilson in Prussia")
-col_forbin = Contact.create("Colonel", "Forbin", "forbin@tmwsiy.com", "Looks too much like Dave")
-palmer = Contact.create("Robert", "Palmer", "palmer@gamehenge.com", "Accountant funding the revolution")
+# jeff = Contact.create("Jeff", "Rothwell", "jeff@rothwell.com", "pretty alright dude")
+# aaron_wolf = Contact.create("Aaron", "Wolf", "aaron@gamehenge.com", "resists Wilson in Prussia")
+# col_forbin = Contact.create("Colonel", "Forbin", "forbin@tmwsiy.com", "Looks too much like Dave")
+# palmer = Contact.create("Robert", "Palmer", "palmer@gamehenge.com", "Accountant funding the revolution")
 
 c = CRM.new
 
